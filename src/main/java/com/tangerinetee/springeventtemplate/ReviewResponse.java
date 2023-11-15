@@ -1,14 +1,14 @@
 package com.tangerinetee.springeventtemplate;
 
-public record ReviewPostResponse(
+public record ReviewResponse(
         long reviewId,
         boolean kindness,
         boolean goodFacility,
         boolean cheapFee,
         boolean goodManagement
 ) {
-    public static ReviewPostResponse from(ReviewPostResult result) {
-        return new ReviewPostResponse(
+    public static ReviewResponse from(ReviewResult result) {
+        return new ReviewResponse(
                 result.reviewId(),
                 result.kindness(),
                 result.goodFacility(),

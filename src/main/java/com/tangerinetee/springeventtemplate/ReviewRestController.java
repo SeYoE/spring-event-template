@@ -1,9 +1,12 @@
 package com.tangerinetee.springeventtemplate;
 
+import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +23,23 @@ public class ReviewRestController {
     }
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<ReviewPostResponse> registerReview(
+    public ResponseEntity<ReviewResponse> registerReview(
             @RequestBody final ReviewPostRequest request
     ) {
-        ReviewPostResult result = reviewService.createReview(request);
-        ReviewPostResponse response = ReviewPostResponse.from(result);
+        ReviewResult result = reviewService.createReview(request);
+        ReviewResponse response = ReviewResponse.from(result);
+
+        return ResponseEntity
+                .status(CREATED)
+                .body(response);
+    }
+
+    @GetMapping(path = "/{reviewId}", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<ReviewResponse> getReview(
+            @PathVariable final Long reviewId
+    ) {
+        ReviewResult result = reviewService.findReview(reviewId);
+        ReviewResponse response = ReviewResponse.from(result);
 
         return ResponseEntity
                 .status(OK)
