@@ -13,4 +13,10 @@ public class ReviewService {
         this.reviewJpaRepository = reviewJpaRepository;
     }
 
+    public ReviewPostResult createReview(ReviewPostRequest request) {
+        Review review = request.toEntity();
+        Review save = reviewJpaRepository.save(review);
+
+        return ReviewPostResult.from(save);
+    }
 }
