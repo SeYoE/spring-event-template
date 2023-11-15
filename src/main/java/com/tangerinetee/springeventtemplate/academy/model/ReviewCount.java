@@ -2,7 +2,6 @@ package com.tangerinetee.springeventtemplate.academy.model;
 
 import static lombok.AccessLevel.PROTECTED;
 
-import com.tangerinetee.springeventtemplate.review.service.ReviewParam;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.util.Map;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -49,25 +49,11 @@ public class ReviewCount {
         this.goodManagementCount = 0;
     }
 
-    public ReviewCount(
-            Academy academy,
-            long kindnessCount,
-            long goodFacilityCount,
-            long cheapFeeCount,
-            long goodManagementCount
-    ) {
-        this.academy = academy;
-        this.kindnessCount = kindnessCount;
-        this.goodFacilityCount = goodFacilityCount;
-        this.cheapFeeCount = cheapFeeCount;
-        this.goodManagementCount = goodManagementCount;
-    }
-
-    public ReviewCount addReview(ReviewParam param) {
-        this.kindnessCount += param.kindness() ? 1 : 0;
-        this.goodFacilityCount += param.goodFacility() ? 1 : 0;
-        this.cheapFeeCount += param.cheapFee() ? 1: 0;
-        this.goodManagementCount += param.goodManagement() ? 1 : 0;
+    public ReviewCount addReview(Map<String, Boolean> reviews) {
+        this.kindnessCount += reviews.get("kindness") ? 1 : 0;
+        this.goodFacilityCount += reviews.get("goodFacility") ? 1 : 0;
+        this.cheapFeeCount += reviews.get("cheapFee") ? 1 : 0;
+        this.goodManagementCount += reviews.get("goodManagement") ? 1 : 0;
         return this;
     }
 

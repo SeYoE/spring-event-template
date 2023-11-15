@@ -8,7 +8,7 @@ public record ReviewParam(
         boolean cheapFee,
         boolean goodManagement
 ) {
-    public Review toEntity() {
-        return new Review(kindness, goodFacility, cheapFee, goodManagement);
+    public Review toEntity(long academyId) {
+        return new Review(academyId, kindness, goodFacility, cheapFee, goodManagement);
     }
 }

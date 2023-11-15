@@ -21,6 +21,9 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "academy_id", nullable = false)
+    private Long academyId;
+
     @Column(name = "kindness", nullable = false)
     private boolean kindness;
 
@@ -33,7 +36,8 @@ public class Review {
     @Column(name = "good_managment", nullable = false)
     private boolean goodManagement;
 
-    public Review(boolean kindness, boolean goodFacility, boolean cheapFee, boolean goodManagement) {
+    public Review(Long academyId, boolean kindness, boolean goodFacility, boolean cheapFee, boolean goodManagement) {
+        this.academyId = academyId;
         this.kindness = kindness;
         this.goodFacility = goodFacility;
         this.cheapFee = cheapFee;
