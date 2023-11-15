@@ -1,5 +1,7 @@
-package com.tangerinetee.springeventtemplate.review;
+package com.tangerinetee.springeventtemplate.review.service;
 
+import com.tangerinetee.springeventtemplate.review.model.Review;
+import com.tangerinetee.springeventtemplate.review.repository.ReviewJpaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,17 +17,11 @@ public class ReviewService {
     }
 
     @Transactional
-    public ReviewResult createReview(ReviewPostRequest request) {
-        Review review = request.toEntity();
+    public ReviewResult createReview(ReviewParam param) {
+        Review review = param.toEntity();
         Review save = reviewJpaRepository.save(review);
 
         return ReviewResult.from(save);
     }
 
-    public ReviewResult findReview(Long reviewId) {
-        Review review = reviewJpaRepository.findById(reviewId)
-                .orElseThrow(() -> new EntityNotFoundException("리뷰 없졍"));
-
-        return ReviewResult.from(review);
-    }
 }

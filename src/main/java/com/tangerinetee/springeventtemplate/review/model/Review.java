@@ -1,4 +1,4 @@
-package com.tangerinetee.springeventtemplate.review;
+package com.tangerinetee.springeventtemplate.review.model;
 
 import static lombok.AccessLevel.PROTECTED;
 

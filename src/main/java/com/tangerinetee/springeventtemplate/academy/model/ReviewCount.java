@@ -2,6 +2,7 @@ package com.tangerinetee.springeventtemplate.academy.model;
 
 import static lombok.AccessLevel.PROTECTED;
 
+import com.tangerinetee.springeventtemplate.review.service.ReviewParam;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -60,6 +61,14 @@ public class ReviewCount {
         this.goodFacilityCount = goodFacilityCount;
         this.cheapFeeCount = cheapFeeCount;
         this.goodManagementCount = goodManagementCount;
+    }
+
+    public ReviewCount addReview(ReviewParam param) {
+        this.kindnessCount += param.kindness() ? 1 : 0;
+        this.goodFacilityCount += param.goodFacility() ? 1 : 0;
+        this.cheapFeeCount += param.cheapFee() ? 1: 0;
+        this.goodManagementCount += param.goodManagement() ? 1 : 0;
+        return this;
     }
 
 }

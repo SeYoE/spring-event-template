@@ -1,4 +1,6 @@
-package com.tangerinetee.springeventtemplate.review;
+package com.tangerinetee.springeventtemplate.review.service;
+
+import com.tangerinetee.springeventtemplate.review.model.Review;
 
 public record ReviewResult(
         long reviewId,
