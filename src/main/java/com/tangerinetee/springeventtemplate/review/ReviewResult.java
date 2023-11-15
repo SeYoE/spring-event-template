@@ -1,4 +1,4 @@
-package com.tangerinetee.springeventtemplate;
+package com.tangerinetee.springeventtemplate.review;
 
 public record ReviewResult(
         long reviewId,

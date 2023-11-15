@@ -1,4 +1,4 @@
-package com.tangerinetee.springeventtemplate;
+package com.tangerinetee.springeventtemplate.review;
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;

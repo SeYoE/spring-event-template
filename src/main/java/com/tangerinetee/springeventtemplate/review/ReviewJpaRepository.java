@@ -1,4 +1,4 @@
-package com.tangerinetee.springeventtemplate;
+package com.tangerinetee.springeventtemplate.review;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

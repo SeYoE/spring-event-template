@@ -1,4 +1,4 @@
-package com.tangerinetee.springeventtemplate;
+package com.tangerinetee.springeventtemplate.review;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
